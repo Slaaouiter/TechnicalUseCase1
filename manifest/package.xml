@@ -8,5 +8,17 @@
         <members>*</members>
         <name>FlexiPage</name>
     </types>
+    <types>
+        <members>*</members>
+        <name>AppMenu</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomApplicationComponent</name>
+    </types>
     <version>55.0</version>
 </Package>
