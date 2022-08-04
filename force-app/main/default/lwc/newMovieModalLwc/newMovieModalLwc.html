@@ -19,8 +19,14 @@
                         <div class="slds-form-element__control">
                             <div class="slds-grid slds-wrap">
                                 <div class="slds-col slds-size_11-of-12">
-                                    <lightning-combobox name="progress" value={movie.Category__c} options={options}>
+                                    <lightning-combobox name="progress" value={movie.Category__c} options={propertyOrFunction.data.values}>
                                     </lightning-combobox>
+                                    <p>{categoryField}</p>
+                                    <p>{industryField}</p>
+                                    <p>{movieObject}</p>
+                                    <p>{movieMetadata.data.defaultRecordTypeId}</p>
+                                    <p>{shitoo}</p>
+                                    <p>EMPY ? {picklistValues.data}</p>
                                 </div>
                             </div>
                         </div>
@@ -41,6 +47,12 @@
                         <label class="slds-form-element__label"><strong>Actors</strong></label>
                         <div class="slds-form-element__control">
                             <c-actors></c-actors>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-form-element_horizontal">
+                        <label class="slds-form-element__label"><strong>Rating</strong></label>
+                        <div class="slds-form-element__control">
+                            <c-star-rating onratingchange={handleRatingChanged}></c-star-rating>
                         </div>
                     </div>
                 </div>

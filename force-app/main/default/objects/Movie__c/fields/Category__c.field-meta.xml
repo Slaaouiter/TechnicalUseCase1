@@ -4,12 +4,13 @@
     <externalId>false</externalId>
     <label>Category</label>
     <required>false</required>
+    <securityClassification>Public</securityClassification>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>true</sorted>
+            <sorted>false</sorted>
             <value>
                 <fullName>Action</fullName>
                 <default>false</default>
