@@ -1,0 +1,13 @@
+<template>
+    <div class="slds-form-element__control">
+        <template iterator:actor={listOfChosenActors}>
+            <c-actor 
+            key={actor.value}
+            actor-id={actor.value}
+            onactorchange = {actorHandler}
+            show-plus = {actor.last}
+            chosen-actors={listOfChosenActors}
+            ></c-actor>
+        </template>
+    </div>
+</template>
