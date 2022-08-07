@@ -1,19 +1,36 @@
 <template>
-    <div class="slds-grid slds-wrap slds-var-p-bottom_x-small">
-        <div class="slds-col slds-size_10-of-12">
-            <lightning-combobox placeholder="Select actor" value={actorId} options={availableActors} onchange={handleActorChange}></lightning-combobox>
-        </div>
-        <div class="slds-col slds-size_2-of-12" if:true={showPlus}>
-            <label>
-                <lightning-button-icon icon-name="utility:add" alternative-text="Add actor"
-                    class="slds-var-m-left_xx-small" title="Add actor" onclick={plus}></lightning-button-icon>
-            </label>
-        </div>
-        <div class="slds-col slds-size_2-of-12" if:false={showPlus}>
-            <label>
-                <lightning-button-icon icon-name="utility:dash" alternative-text="Remove actor"
-                    class="slds-var-m-left_xx-small" title="Remove actor" onclick={minus}></lightning-button-icon>
-            </label>
-        </div>
+  <div class="slds-grid slds-var-p-bottom_x-small">
+    <div class="slds-col slds-size_12-of-12">
+      <lightning-combobox
+        variant="label-hidden"
+        placeholder="Select actor"
+        value={actorId}
+        options={availableActors}
+        onchange={handleActorChange}
+        disabled={isDisabled}
+      ></lightning-combobox>
     </div>
+    <div class="slds-col slds-size_2-of-12" if:true={showPlus}>
+      <label>
+        <lightning-button-icon
+          icon-name="utility:add"
+          alternative-text="Add actor"
+          class="slds-var-m-left_xx-small"
+          title="Add actor"
+          onclick={plus}
+        ></lightning-button-icon>
+      </label>
+    </div>
+    <div class="slds-col slds-size_2-of-12" if:false={showPlus}>
+      <label>
+        <lightning-button-icon
+          icon-name="utility:dash"
+          alternative-text="Remove actor"
+          class="slds-var-m-left_xx-small"
+          title="Remove actor"
+          onclick={minus}
+        ></lightning-button-icon>
+      </label>
+    </div>
+  </div>
 </template>

@@ -1,0 +1,20 @@
+{
+    "apiName": "Movie__c",
+    "createable": true,
+    "custom": true,
+    "defaultRecordTypeId": "012000000000000AAA",
+    "deletable": true,
+    "dependentFields": {},
+    "feedEnabled": true,
+    "recordTypeInfos": {
+        "012000000000000AAA": {
+            "available": true,
+            "defaultRecordTypeMapping": true,
+            "master": true,
+            "name": "Master",
+            "recordTypeId": "012000000000000AAA"
+        }
+    },
+    "searchable": true,
+    "updateable": true
+}

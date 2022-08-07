@@ -1,0 +1,21 @@
+<template>
+  <template if:true={newFileWasUploaded}>
+    <div class="slds-align_absolute-center">
+      <img src={imageUrl} />
+    </div>
+  </template>
+  <div class="slds-grid slds-wrap">
+    <div class="slds-col slds-var-p-left_xx-small slds-size_4-of-12 slds-var-p-top_x-large">
+      <label>Image</label>
+    </div>
+    <div>
+      <lightning-file-upload
+        name="fileUploader"
+        accept={acceptedFormats}
+        record-id={recordId}
+        onuploadfinished={handleUploadFinished}
+      >
+      </lightning-file-upload>
+    </div>
+  </div>
+</template>

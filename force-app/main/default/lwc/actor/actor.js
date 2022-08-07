@@ -1,83 +1,82 @@
-import { api, LightningElement, track, wire } from 'lwc';
-import getActors from '@salesforce/apex/ActorsService.getActors';
+import { api, LightningElement, track, wire } from "lwc";
+import getActors from "@salesforce/apex/ActorsService.getActors";
 
 export default class Actor extends LightningElement {
-    
-    @api
-    actorId;
+  chosenActor;
 
-    @api
-    showPlus;
+  @api
+  get actorId() {
+    return this.chosenActor;
+  }
 
-    @api
-    chosenActors;
+  set actorId(value) {
+    this.chosenActor = value;
+  }
 
-    @track
-    availableActors = [];
+  @api
+  showPlus;
 
-    @wire(getActors)
-    actors({ data, error }) {
-        if (data) {
-            this.availableActors = data.map(actor => {
-                return {
-                    label: actor.Name,
-                    value: actor.Id
-                }
-            });
-            this.availableActors = this.availableActors.filter(actor => {
-                return (this.actorId == actor.value) || 
-                !this.chosenActors.includes(actor.value)
-            });
-        }
-        else {
-            console.log("eyoooo" + error);
-        }
+  @api
+  chosenActors;
+
+  @track
+  availableActors = [];
+
+  @wire(getActors)
+  actors({ data }) {
+    if (data) {
+      this.availableActors = data.map((actor) => {
+        return {
+          label: actor.Name,
+          value: actor.Id
+        };
+      });
+      this.availableActors = this.availableActors.filter((actor) => {
+        return (
+          this.chosenActor === actor.value ||
+          !this.chosenActors.includes(actor.value)
+        );
+      });
     }
+  }
 
-    handleActorChange(event){
-        if(this.actorId != event.detail.value){
-            const actorChangeEvent = new CustomEvent(
-                'actorchange',
-                {
-                    detail : {
-                        actorId : event.detail.value,
-                        oldActorId:this.actorId,
-                        action : 'update'
-                    }
-                }
-            );
-            this.dispatchEvent(actorChangeEvent);
-            this.actorId = event.detail.value;
-            
+  handleActorChange(event) {
+    if (this.chosenActor !== event.detail.value) {
+      const actorChangeEvent = new CustomEvent("actorchange", {
+        detail: {
+          actorId: event.detail.value,
+          oldActorId: this.chosenActor,
+          action: "update"
         }
+      });
+      this.dispatchEvent(actorChangeEvent);
+      this.chosenActor = event.detail.value;
     }
+  }
 
-    plus(){
-        if(this.actorId != "defaultActor"){
-            const addActorEvent = new CustomEvent(
-                'actorchange',
-                {
-                    detail : {
-                        actorId : 'defaultActor',
-                        action : 'add'
-                    }
-                }
-            );
-            this.dispatchEvent(addActorEvent);
+  plus() {
+    if (this.chosenActor !== "defaultActor") {
+      const addActorEvent = new CustomEvent("actorchange", {
+        detail: {
+          actorId: "defaultActor",
+          action: "add"
         }
+      });
+      this.dispatchEvent(addActorEvent);
     }
+  }
 
-    minus(){
-        const removeActorEvent = new CustomEvent(
-            'actorchange',
-            {
-                detail : {
-                    actorId : this.actorId,
-                    action : 'remove'
-                }
-            }
-        )
-        this.dispatchEvent(removeActorEvent);
-    }
-    
+  minus() {
+    const removeActorEvent = new CustomEvent("actorchange", {
+      detail: {
+        actorId: this.chosenActor,
+        action: "remove"
+      }
+    });
+    this.dispatchEvent(removeActorEvent);
+  }
+
+  get isDisabled() {
+    return this.chosenActor !== "defaultActor";
+  }
 }
