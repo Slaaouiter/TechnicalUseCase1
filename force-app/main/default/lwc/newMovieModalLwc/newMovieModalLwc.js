@@ -47,6 +47,7 @@ export default class NewMovieModalLWC extends LightningElement {
 
   handleCancel() {
     this.showModal = false;
+    this.showNameRequiredMessage = false;
   }
 
   handleRatingChanged(event) {

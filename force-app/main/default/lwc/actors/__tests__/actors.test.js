@@ -1,12 +1,25 @@
 import { createElement } from "lwc";
 import Actors from "c/actors";
-
+const mockGetActorList = require("./data/getActorList.json");
+import getActors from "@salesforce/apex/ActorsController.getActors";
+jest.mock(
+  "@salesforce/apex/ActorsController.getActors",
+  () => {
+    const { createApexTestWireAdapter } = require("@salesforce/sfdx-lwc-jest");
+    return {
+      default: createApexTestWireAdapter(jest.fn())
+    };
+  },
+  { virtual: true }
+);
 describe("c-actors", () => {
   afterEach(() => {
     // The jsdom instance is shared across test cases in a single file so reset the DOM
     while (document.body.firstChild) {
       document.body.removeChild(document.body.firstChild);
     }
+    jest.clearAllMocks();
+
   });
 
   it("actorHandler -> addActor :  need to add the actorId as chosen when the event action is 'add'", () => {
@@ -17,6 +30,8 @@ describe("c-actors", () => {
     actorsComponent.actors = ["A000ldsdo340"];
     //When
     document.body.appendChild(actorsComponent);
+    getActors.emit(mockGetActorList);
+
     const actorList = actorsComponent.shadowRoot.querySelectorAll("c-actor");
     expect(actorList.length).toEqual(1);
     const actor = actorList[0];
@@ -40,6 +55,8 @@ describe("c-actors", () => {
     actorsComponent.actors = ["A000ldsdo340"];
     //When
     document.body.appendChild(actorsComponent);
+    getActors.emit(mockGetActorList);
+
     const actorList = actorsComponent.shadowRoot.querySelectorAll("c-actor");
     expect(actorList.length).toEqual(1);
     const actor = actorList[0];
@@ -62,6 +79,8 @@ describe("c-actors", () => {
     actorsComponent.actors = ["A000ldsdo340", "A000ldsd999", "defaultActor"];
     //When
     document.body.appendChild(actorsComponent);
+    getActors.emit(mockGetActorList);
+
     const actorList = actorsComponent.shadowRoot.querySelectorAll("c-actor");
     expect(actorList.length).toEqual(3);
     const actor = actorList[1];
@@ -84,6 +103,8 @@ describe("c-actors", () => {
     actorsComponent.actors = ["defaultActor"];
     //When
     document.body.appendChild(actorsComponent);
+    getActors.emit(mockGetActorList);
+
     const actorList = actorsComponent.shadowRoot.querySelectorAll("c-actor");
     expect(actorList.length).toEqual(1);
     const actor = actorList[0];

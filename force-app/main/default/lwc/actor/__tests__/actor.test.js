@@ -1,27 +1,15 @@
+//need update
 import { createElement } from "lwc";
 import Actor from "c/actor";
-import getActors from "@salesforce/apex/ActorsController.getActors";
 
-const mockGetActorList = require("./data/getActorList.json");
 
-jest.mock(
-  "@salesforce/apex/ActorsController.getActors",
-  () => {
-    const { createApexTestWireAdapter } = require("@salesforce/sfdx-lwc-jest");
-    return {
-      default: createApexTestWireAdapter(jest.fn())
-    };
-  },
-  { virtual: true }
-);
+
 describe("c-actor", () => {
   afterEach(() => {
     // The jsdom instance is shared across test cases in a single file so reset the DOM
     while (document.body.firstChild) {
       document.body.removeChild(document.body.firstChild);
     }
-    // Prevent data saved on mocks from leaking between tests
-    jest.clearAllMocks();
   });
 
   it("renders all actors as choices in the combobox", async () => {
@@ -33,7 +21,6 @@ describe("c-actor", () => {
     actorComponent.actorId = "A000ldsdo340";
     //When
     document.body.appendChild(actorComponent);
-    getActors.emit(mockGetActorList);
     await flushPromises();
     //Then
     const combobox =
@@ -55,7 +42,7 @@ describe("c-actor", () => {
 
     //When
     document.body.appendChild(actorComponent);
-    getActors.emit(mockGetActorList);
+    
     await flushPromises();
 
     //Then
@@ -77,7 +64,7 @@ describe("c-actor", () => {
 
     //When
     document.body.appendChild(actorComponent);
-    getActors.emit(mockGetActorList);
+    
     await flushPromises();
 
     //Then
@@ -96,7 +83,7 @@ describe("c-actor", () => {
 
     //When
     document.body.appendChild(actorComponent);
-    getActors.emit(mockGetActorList);
+    
     await flushPromises();
 
     //Then
@@ -115,7 +102,7 @@ describe("c-actor", () => {
 
     //When
     document.body.appendChild(actorComponent);
-    getActors.emit(mockGetActorList);
+    
     await flushPromises();
 
     //Then

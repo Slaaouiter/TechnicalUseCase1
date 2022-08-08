@@ -14,6 +14,7 @@ describe('c-movie-tile', () => {
         const element = createElement('c-movie-tile', {
             is: MovieTile
         });
+        element.movie = {};
 
         // Act
         document.body.appendChild(element);

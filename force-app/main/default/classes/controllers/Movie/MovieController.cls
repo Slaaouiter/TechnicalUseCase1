@@ -26,13 +26,6 @@ public with sharing class MovieController {
         userId,
         movie.Id
       );
-      // ContentVersion contentVersion = [
-      //   SELECT Id
-      //   FROM ContentVersion
-      //   WHERE ContentDocumentId = :contentDocumentId
-      // ];
-
-      // movie.Picture__c = contentVersion.Id;
     }
   }
 
