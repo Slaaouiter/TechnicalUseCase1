@@ -14,7 +14,7 @@ private with sharing class FileManagementServiceTest {
     ];
     String contentDocumentId = contentVersion.ContentDocumentId;
     String linkedEntity = UserInfo.getUserId();
-    String newLinkedEntity = TestDataFactory.createMovie('The tester', '404');
+    String newLinkedEntity = TestDataFactory.createMovie('The tester');
 
     //When
     Test.startTest();
