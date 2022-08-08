@@ -4,18 +4,16 @@ public with sharing class FileManagementService {
     String oldLinkedEntity,
     String newLinkedEntity
   ) {
-    System.debug('SELECT ID, ContentDocumentid, LinkedEntityid FROM ContentDocumentLink WHERE LinkedEntityid = '+oldLinkedEntity+
-      ' AND ContentDocumentid = '+documentId);
     ContentDocumentLink documentLink = [
       SELECT ID, ContentDocumentid, LinkedEntityid
       FROM ContentDocumentLink
       WHERE
         LinkedEntityid = :oldLinkedEntity
-        AND ContentDocumentid = :documentId
-        AND ShareType ='V' //Apparently there is another one with share type I that can't be deleted
+        AND ContentDocumentid = :documentId 
     ];
     if (documentLink != null) {
-      delete documentLink;
+      // delete documentLink; //Apparently the documentLink created by the standard file input component has a ShareType of I --> It cannot be deleted FIELD_INTEGRITY_EXCEPTION;
+      //Maybe a solution would be to create a custom component and use ShareType = V
       ContentDocumentLink newDocumentLink = documentLink.clone();
       newDocumentLink.LinkedEntityid = newLinkedEntity;
       insert newDocumentLink;
