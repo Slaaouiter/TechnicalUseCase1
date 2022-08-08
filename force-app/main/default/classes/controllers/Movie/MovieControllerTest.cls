@@ -22,8 +22,8 @@ private with sharing class MovieControllerTest {
     ];
     String contentDocumentId = contentVersion.ContentDocumentId;
 
-    String idAhmed = TestDataFactory.createActor('Ahmed');
-    String idOualid = TestDataFactory.createActor('Oualid');
+    String idAhmed = TestDataFactory.createActor('Ahmed','Male');
+    String idOualid = TestDataFactory.createActor('Oualid','Male');
     List<String> actorsIds = new List<String>{ idAhmed, idOualid };
     //When
     Test.startTest();

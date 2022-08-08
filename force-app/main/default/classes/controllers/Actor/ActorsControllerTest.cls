@@ -2,7 +2,7 @@
 public with sharing class ActorsControllerTest {
     @TestSetup
     static void initializeData(){
-        TestDataFactory.createActor('Ahmed');
+        TestDataFactory.createActor('Ahmed','Male');
     }
 
     @isTest

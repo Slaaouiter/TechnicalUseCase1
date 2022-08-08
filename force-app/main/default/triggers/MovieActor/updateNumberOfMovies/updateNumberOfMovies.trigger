@@ -25,5 +25,5 @@ trigger updateNumberOfMovies on MovieActor__c(after insert) {
   if (actors.size() > 0) {
     update actors;
   }
-
+  //TODO :need also to decrease number of movies on delete 
 }

@@ -1,10 +1,10 @@
 @isTest
-public class updateNumberOfMoviesTest {
+private class updateNumberOfMoviesTest {
   @isTest
-  public static void testUpdateNumberOfMoviesTest_for_one_actor_one_movie() {
+  public static void one_actor_one_movie() {
     //Given
     String movieId = TestDataFactory.createMovie('Solo leveling');
-    String actorId = TestDataFactory.createActor('Oualid Slaaoutier');
+    String actorId = TestDataFactory.createActor('Oualid Slaaoutier','Male');
 
     //When
     Test.startTest();
@@ -24,11 +24,11 @@ public class updateNumberOfMoviesTest {
     System.assertEquals(actor.Number_of_movies__c, 1);
   }
   @isTest
-  public static void testUpdateNumberOfMoviesTest_for_one_actor_many_movies() {
+  public static void one_actor_many_movies() {
     //Given
     String soloLevelingId = TestDataFactory.createMovie('Solo leveling');
     String titanicId = TestDataFactory.createMovie('Titanic');
-    String actorId = TestDataFactory.createActor('Oualid Slaaoutier');
+    String actorId = TestDataFactory.createActor('Oualid Slaaoutier','Male');
 
     //When
     Test.startTest();
@@ -59,14 +59,15 @@ public class updateNumberOfMoviesTest {
   }
 
   @isTest
-  public static void testUpdateNumberOfMoviesTest_for_many_actors_many_movies() {
+  public static void many_actors_many_movies() {
     //Given
     String soloLevelingId = TestDataFactory.createMovie('Solo leveling');
     String titanicId = TestDataFactory.createMovie('Titanic');
     String inceptionId = TestDataFactory.createMovie('Inception');
-    String oualidId = TestDataFactory.createActor('Oualid Slaaoutier');
-    String ahmedId = TestDataFactory.createActor('Ahmed');
-    String najlaeId = TestDataFactory.createActor('Najlae');
+    
+    String oualidId = TestDataFactory.createActor('Oualid Slaaoutier','Male');
+    String ahmedId = TestDataFactory.createActor('Ahmed','Male');
+    String najlaeId = TestDataFactory.createActor('Najlae','Female');
 
     //When
     Test.startTest();
