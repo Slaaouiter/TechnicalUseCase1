@@ -2,7 +2,7 @@ import { api, LightningElement } from "lwc";
 
 export default class Actor extends LightningElement {
   @api
-  showPlus;
+  isLast;
 
   @api
   availableActors;
@@ -21,6 +21,9 @@ export default class Actor extends LightningElement {
     this.chosenActor = value;
   }
 
+  get showPlus(){
+    return this.isLast && this.availableActors.length > 1;
+  }
   handleActorChange(event) {
     if (this.chosenActor !== event.detail.value) {
       const actorChangeEvent = new CustomEvent("actorchange", {
@@ -61,6 +64,6 @@ export default class Actor extends LightningElement {
     return this.chosenActor !== "defaultActor";
   }
   get options() {
-    return this.showPlus ? this.availableActors : this.allActors;
+    return this.isLast ? this.availableActors : this.allActors;
   }
 }

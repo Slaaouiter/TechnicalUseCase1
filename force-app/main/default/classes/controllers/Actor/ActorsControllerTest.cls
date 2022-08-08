@@ -6,7 +6,7 @@ public with sharing class ActorsControllerTest {
     }
 
     @isTest
-    static void test(){
+    static void returns_all_actors(){
         //When
         Test.startTest();
         List<Actor__c> actors = ActorsController.getActors();
