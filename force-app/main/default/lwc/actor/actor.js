@@ -1,5 +1,5 @@
 import { api, LightningElement, track, wire } from "lwc";
-import getActors from "@salesforce/apex/ActorsService.getActors";
+import getActors from "@salesforce/apex/ActorsController.getActors";
 
 export default class Actor extends LightningElement {
   chosenActor;

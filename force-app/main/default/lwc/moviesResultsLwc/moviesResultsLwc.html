@@ -1,0 +1,21 @@
+<template>
+  <template if:true={movies}>
+    <div class="slds-scrollable_y">
+      <lightning-layout class="slds-grid slds-wrap slds-theme_default">
+        <template for:each={movies} for:item="movie">
+          <lightning-layout-item
+            key={movie.Id}
+            padding="around-small"
+            class="slds-size_2-of-6"
+          >
+            <c-movie-tile
+              movie={movie}
+              onmovieselect={updateSelectedTile}
+              selected-movie-id={selectedMovieId}
+            ></c-movie-tile>
+          </lightning-layout-item>
+        </template>
+      </lightning-layout>
+    </div>
+  </template>
+</template>

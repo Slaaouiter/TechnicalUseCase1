@@ -1,0 +1,34 @@
+<template>
+  <div onclick={selectMovie} class={tileClass}>
+    <div style={backgroundStyle} class="tile"></div>
+    <div class="slds-grid slds-var-p-top_large">
+      <label class="slds-col slds-size_3-of-7 slds-var-p-left_xx-large"
+        >Name</label
+      >
+      <label class="slds-col slds-size_1-of-7 slds-align_absolute-center"
+        >:</label
+      >
+      <label class="slds-col slds-size_3-of-7 slds-truncate"> {movie.Name} </label>
+    </div>
+    <div class="slds-grid">
+      <label class="slds-col slds-size_3-of-7 slds-var-p-left_xx-large"
+        >Type</label
+      >
+      <label class="slds-col slds-size_1-of-7 slds-align_absolute-center"
+        >:</label
+      >
+      <label class="slds-col slds-size_3-of-7"> {movie.Type__c} </label>
+    </div>
+    <div class="slds-grid">
+      <label class="slds-col slds-size_3-of-7 slds-var-p-left_xx-large"
+        >Rating</label
+      >
+      <label class="slds-col slds-size_1-of-7 slds-align_absolute-center"
+        >:</label
+      >
+      <div class="slds-col slds-size_3-of-7">
+        <c-star-rating read-only="true" value={movie.Rating__c}></c-star-rating>
+      </div>
+    </div>
+  </div>
+</template>

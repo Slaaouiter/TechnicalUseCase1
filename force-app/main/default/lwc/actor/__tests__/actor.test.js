@@ -1,11 +1,11 @@
 import { createElement } from "lwc";
 import Actor from "c/actor";
-import getActors from "@salesforce/apex/ActorsService.getActors";
+import getActors from "@salesforce/apex/ActorsController.getActors";
 
 const mockGetActorList = require("./data/getActorList.json");
 
 jest.mock(
-  "@salesforce/apex/ActorsService.getActors",
+  "@salesforce/apex/ActorsController.getActors",
   () => {
     const { createApexTestWireAdapter } = require("@salesforce/sfdx-lwc-jest");
     return {

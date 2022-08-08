@@ -3,7 +3,7 @@ import { getPicklistValues, getObjectInfo } from "lightning/uiObjectInfoApi";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import USER_ID from "@salesforce/user/Id";
 
-import createMovie from "@salesforce/apex/MovieService.createMovie";
+import createMovie from "@salesforce/apex/MovieController.createMovie";
 import MOVIE_OBJECT from "@salesforce/schema/Movie__c";
 import TYPE_FIELD from "@salesforce/schema/Movie__c.Type__c";
 
@@ -77,7 +77,10 @@ export default class NewMovieModalLWC extends LightningElement {
   }
 
   handleSave() {
-    if (this.movie.Name) {
+    if(!this.movie.Name){
+      this.showNameRequiredMessage = true;
+    }
+    else{
       let fileUploader = this.template.querySelector("c-file-uploader");
       this.movie.Picture__c = fileUploader.uploadedFileUrl;
       let actors = this.template.querySelector("c-actors").actors;
@@ -102,8 +105,6 @@ export default class NewMovieModalLWC extends LightningElement {
           });
           this.dispatchEvent(event);
         });
-    } else {
-      this.showNameRequiredMessage = true;
     }
   }
 }
