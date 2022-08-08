@@ -4,7 +4,7 @@ import { refreshApex } from "@salesforce/apex";
 
 export default class MoviesResultsLwc extends LightningElement {
   isLoading = false;
-  movieSearchName;
+  movieSearchName='';
   @api
   selectedMovieId;
 
