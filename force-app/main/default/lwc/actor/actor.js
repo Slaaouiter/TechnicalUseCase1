@@ -1,4 +1,4 @@
-import { api, LightningElement} from "lwc";
+import { api, LightningElement } from "lwc";
 
 export default class Actor extends LightningElement {
   @api
@@ -8,11 +8,7 @@ export default class Actor extends LightningElement {
   availableActors;
 
   @api
-  allActors
-
-  get options(){
-    return this.showPlus? this.availableActors:this.allActors;
-  }
+  allActors;
 
   chosenActor;
 
@@ -24,8 +20,6 @@ export default class Actor extends LightningElement {
   set actorId(value) {
     this.chosenActor = value;
   }
-
-  
 
   handleActorChange(event) {
     if (this.chosenActor !== event.detail.value) {
@@ -65,5 +59,8 @@ export default class Actor extends LightningElement {
 
   get isDisabled() {
     return this.chosenActor !== "defaultActor";
+  }
+  get options() {
+    return this.showPlus ? this.availableActors : this.allActors;
   }
 }
