@@ -17,7 +17,7 @@ describe("c-actor", () => {
     const actorComponent = createElement("c-actor", {
       is: Actor
     });
-    actorComponent.showPlus = true;
+    actorComponent.isLast = true;
     actorComponent.availableActors = [
       { label: "Najlae", value: "A000ldsdo9999" }
     ];
