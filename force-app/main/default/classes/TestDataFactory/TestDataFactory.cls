@@ -1,6 +1,6 @@
 @isTest
 public with sharing class TestDataFactory {
-  public static String createActor(String name,String gender) {
+  public static String createActor(String name, String gender) {
     Actor__c actor = new Actor__c();
     actor.Name = name;
     actor.Gender__c = gender;
@@ -24,8 +24,13 @@ public with sharing class TestDataFactory {
     insert movie;
     return movie.Id;
   }
+  public static String createMovie(String name, Date releasedDate) {
+    Movie__c movie = new Movie__c(Name = name, Release_date__c = releasedDate);
+    insert movie;
+    return movie.Id;
+  }
 
-  public static String createMovieActor(String movieId, String actorId){
+  public static String createMovieActor(String movieId, String actorId) {
     MovieActor__c movieActor = new MovieActor__c(
       Actor__c = actorId,
       Movie__c = movieId
@@ -33,5 +38,4 @@ public with sharing class TestDataFactory {
     insert movieActor;
     return movieActor.Id;
   }
-  
 }
