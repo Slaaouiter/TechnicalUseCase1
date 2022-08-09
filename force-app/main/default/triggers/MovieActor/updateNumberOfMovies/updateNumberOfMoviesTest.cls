@@ -21,7 +21,7 @@ private class updateNumberOfMoviesTest {
       FROM Actor__c
       WHERE Id = :actorId
     ];
-    System.assertEquals(actor.Number_of_movies__c, 1);
+    System.assertEquals(actor.Number_of_movies__c, 1,'number of movies is wrong');
   }
   @isTest
   public static void one_actor_many_movies() {
@@ -55,7 +55,7 @@ private class updateNumberOfMoviesTest {
       FROM Actor__c
       WHERE Id = :actorId
     ];
-    System.assertEquals(actor.Number_of_movies__c, 2);
+    System.assertEquals(actor.Number_of_movies__c, 2,'number of movies  is wrong');
   }
 
   @isTest
@@ -126,8 +126,8 @@ private class updateNumberOfMoviesTest {
       FROM Actor__c
       WHERE Id = :najlaeId
     ];
-    System.assertEquals(oualid.Number_of_movies__c, 3);
-    System.assertEquals(ahmed.Number_of_movies__c, 2);
-    System.assertEquals(najlae.Number_of_movies__c, 1);
+    System.assertEquals(oualid.Number_of_movies__c, 3,'number of movies for oualid is wrong');
+    System.assertEquals(ahmed.Number_of_movies__c, 2,'number of movies for ahmed is wrong');
+    System.assertEquals(najlae.Number_of_movies__c, 1,'number of movies for najlae is wrong');
   }
 }
